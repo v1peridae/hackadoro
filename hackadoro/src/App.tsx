@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import logo from "../src/assets/logo.png";
 import YoutubeVid from "./playYoutube";
 
+interface Todo {
+  text: string;
+  completed: boolean;
+}
+
 function App() {
   // Existing state variables
   const [timer, setTimer] = useState(20);
@@ -14,7 +19,7 @@ function App() {
   const [selectedVideoId, setSelectedVideoId] = useState("5l8khj88MFQ");
 
   // To-do list state
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState("");
 
   const videoOptions = [
@@ -23,11 +28,11 @@ function App() {
     { id: "yLOM8R6lbzg", title: "White Noise" },
   ];
 
-  const increment = (setter, value, step = 5) => setter(value + step);
-  const decrement = (setter, value, step = 5) => setter(Math.max(0, value - step));
+  const increment = (setter: React.Dispatch<React.SetStateAction<number>>, value: number, step = 5) => setter(value + step);
+  const decrement = (setter: React.Dispatch<React.SetStateAction<number>>, value: number, step = 5) => setter(Math.max(0, value - step));
 
   useEffect(() => {
-    let interval;
+    let interval: NodeJS.Timeout;
 
     if (isRunning) {
       interval = setInterval(() => {
@@ -74,11 +79,11 @@ function App() {
     }
   };
 
-  const toggleTodo = (index) => {
+  const toggleTodo = (index: number) => {
     setTodos(todos.map((todo, i) => (i === index ? { ...todo, completed: !todo.completed } : todo)));
   };
 
-  const deleteTodo = (index) => {
+  const deleteTodo = (index: number) => {
     setTodos(todos.filter((_, i) => i !== index));
   };
 
@@ -159,8 +164,8 @@ function App() {
                 placeholder="Add a task..."
                 className="text-3xl text-texttwo placeholder-texttwo px-2 py-1 rounded-xl w-full mx-3 bg-[#977C8E] outline-none"
               />
-              <button onClick={addTodo} className="text-2xl pr-4 py-2 text-[#977C8E] rounded-lg">
-                Add
+              <button onClick={addTodo} className="text-5xl pr-4 pb-1 text-[#977C8E] rounded-lg">
+                +
               </button>
             </div>
             <ul className="text-left px-4">
@@ -185,7 +190,7 @@ function App() {
             <h2 className="text-textone px-2 text-5xl">Now Playing</h2>
             <div className="text-[#977C8E]">
               <select
-                className=" outline-none leading-none text-6xl bg-[#00000000] w-full text-center"
+                className=" appearance-none outline-none leading-none text-6xl bg-[#00000000] w-full text-center cursor-pointer "
                 onChange={(e) => setSelectedVideoId(e.target.value)}
                 value={selectedVideoId}
               >

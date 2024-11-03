@@ -37,7 +37,7 @@ const YoutubeVid: React.FC<YoutubeVidProps> = ({ videoId }) => {
   return (
     <div className="youtube-player">
       <YouTube videoId={videoId} opts={options} onReady={handleReady} />
-      <button onClick={togglePlayPause} className="play-pause-button text-5xl">
+      <button onClick={togglePlayPause} className="play-pause-button text-5xl leading-none">
         {isPlaying ? "Pause" : "Play"}
       </button>
     </div>
