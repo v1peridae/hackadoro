@@ -4,6 +4,9 @@ module.exports = {
 
   theme: {
     extend: {
+      fontSize: {
+        "9xl": ["400px"],
+      },
       colors: {
         background: "#272739",
         compbg: "#7F1A5D",
@@ -12,7 +15,12 @@ module.exports = {
         textthree: "#A04F83",
       },
       fontFamily: {
-        customFont: ['"Custom Font"', "sans-serif"],
+        neuebit: ["Neue Bit", "sans-serif"],
+        terminal: ["Terminal", "monospace"],
+      },
+
+      borderRadius: {
+        "3xl": "2.2rem",
       },
     },
 

@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Neue Bit";
+  font-style: normal;
+  src: url("./fonts/neuebit.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Terminal";
+  font-style: normal;
+  src: url("./fonts/Terminal.woff") format("woff");
+}
