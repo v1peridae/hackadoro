@@ -72,7 +72,6 @@ function App() {
 
   const handleStartStop = () => {
     setIsRunning(!isRunning);
-    if (!isRunning) setCountdown(onBreak ? breakTime * 60 : timer * 60);
   };
 
   const resetTimer = () => {
