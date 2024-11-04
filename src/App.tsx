@@ -159,11 +159,12 @@ function App() {
               .padStart(2, "0")}
             :{(countdown % 60).toString().padStart(2, "0")}
           </span>
+          <div className="text-5xl leading-none p-0 mt-7  text-[#977C8E]">{onBreak ? "Break" : "Hard At Work"}</div>
           <div className=" items-center content-around ">
-            <h1 className="text-7xl mt-28 text-center cursor-pointer text-[#977C8E] font-neuebit" onClick={handleStartStop}>
+            <h1 className="text-7xl mt-10 text-center cursor-pointer text-textone font-neuebit" onClick={handleStartStop}>
               {isRunning ? "STOP" : "START"}
             </h1>{" "}
-            <h1 className="text-6xl text-center cursor-pointer text-[#977C8E] font-neuebit" onClick={resetTimer}>
+            <h1 className="text-6xl text-center cursor-pointer text-textone font-neuebit" onClick={resetTimer}>
               RESET
             </h1>
           </div>
