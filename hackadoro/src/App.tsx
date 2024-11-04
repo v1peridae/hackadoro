@@ -8,7 +8,6 @@ interface Todo {
 }
 
 function App() {
-  // Existing state variables
   const [timer, setTimer] = useState(20);
   const [breakTime, setBreakTime] = useState(5);
   const [loop, setLoop] = useState(3);
@@ -18,9 +17,10 @@ function App() {
   const [onBreak, setOnBreak] = useState(false);
   const [selectedVideoId, setSelectedVideoId] = useState("5l8khj88MFQ");
 
-  // To-do list state
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState("");
+
+  const [totalTime, setTotalTime] = useState(0); // New state for total time
 
   const videoOptions = [
     { id: "5l8khj88MFQ", title: "Lo-fi Beats" },
@@ -60,6 +60,16 @@ function App() {
     return () => clearInterval(interval);
   }, [isRunning, countdown, onBreak, timer, breakTime, loop, currentLoop]);
 
+  useEffect(() => {
+    const totalTimeInterval = setInterval(() => {
+      if (isRunning && !onBreak) {
+        setTotalTime((prev) => prev + 5);
+      }
+    }, 300000); // 300000 ms = 5 minutes
+
+    return () => clearInterval(totalTimeInterval);
+  }, [isRunning, onBreak]);
+
   const handleStartStop = () => {
     setIsRunning(!isRunning);
     if (!isRunning) setCountdown(onBreak ? breakTime * 60 : timer * 60);
@@ -88,12 +98,12 @@ function App() {
   };
 
   return (
-    <div className="block pt-2 h-screen w-screen bg-background text-textone">
+    <div className="block pt-2 pb-3 h-screen w-screen bg-background text-textone overflow-hidden">
       {/* Main Column Stuff */}
       <div className="grid grid-cols-12 w-full">
         {/* Left Column */}
         <div className="col-span-3">
-          <div className="bg-[#7f1a5d3b] text-[#69316D] px-5 rounded-3xl mx-10 h-auto mb-10 mt-12 font-neuebit">
+          <div className="bg-[#7f1a5d3b] text-[#69316D] px-5 rounded-3xl mx-10 h-auto mb-10 mt-10 font-neuebit">
             <span className="text-textone px-5 text-7xl">Set Timer</span>
             <div className="space-x-5 mx-auto flex justify-center">
               <button className="text-8xl" onClick={() => decrement(setTimer, timer)}>
@@ -106,7 +116,7 @@ function App() {
             </div>
           </div>
 
-          <div className="bg-[#7f1a5d3b] text-[#69316D] px-5 rounded-3xl mx-10 h-auto mb-10 mt-12 font-neuebit">
+          <div className="bg-[#7f1a5d3b] text-[#69316D] px-5 rounded-3xl mx-10 h-auto mb-7 font-neuebit">
             <span className="text-textone px-5 text-7xl">Set Break</span>
             <div className="space-x-5 mx-auto flex justify-center">
               <button className="text-8xl" onClick={() => decrement(setBreakTime, breakTime)}>
@@ -119,7 +129,7 @@ function App() {
             </div>
           </div>
 
-          <div className="bg-[#7f1a5d3b] text-[#69316D] px-5 rounded-3xl mx-10 h-auto mb-10 mt-12 font-neuebit">
+          <div className="bg-[#7f1a5d3b] text-[#69316D] px-5 rounded-3xl mx-10 h-auto mb-7 font-neuebit">
             <span className="text-textone px-5 text-7xl">Set Loop</span>
             <div className="space-x-5 mx-auto flex justify-center">
               <button className="text-8xl" onClick={() => decrement(setLoop, loop, 1)}>
@@ -130,6 +140,13 @@ function App() {
                 +
               </button>
             </div>
+          </div>
+
+          <div className="bg-[#7f1a5d3b] text-[#69316D] px-5 pb-3 rounded-3xl mx-10 h-auto mb-7 font-neuebit text-center align-top">
+            <h2 className="text-textone px-2 text-5xl pt-3 leading-7">Total Time Spent</h2>
+            <span className="text-4xl text-[#977C8E]">
+              {Math.floor(totalTime / 60)} hours {totalTime % 60} minutes
+            </span>
           </div>
         </div>
 
