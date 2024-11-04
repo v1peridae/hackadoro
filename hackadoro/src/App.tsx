@@ -20,7 +20,7 @@ function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState("");
 
-  const [totalTime, setTotalTime] = useState(0); // New state for total time
+  const [totalTime, setTotalTime] = useState(0);
 
   const videoOptions = [
     { id: "5l8khj88MFQ", title: "Lo-fi Beats" },
@@ -65,7 +65,7 @@ function App() {
       if (isRunning && !onBreak) {
         setTotalTime((prev) => prev + 5);
       }
-    }, 300000); // 300000 ms = 5 minutes
+    }, 300000);
 
     return () => clearInterval(totalTimeInterval);
   }, [isRunning, onBreak]);
