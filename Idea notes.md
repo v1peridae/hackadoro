@@ -1,1 +1,2 @@
--
+- add wrapping for long to do items
+- add settings

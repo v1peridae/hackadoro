@@ -13,3 +13,18 @@
   font-style: normal;
   src: url("./fonts/Terminal.woff") format("woff");
 }
+
+.custom-scrollbar {
+  scrollbar-width: none;
+  scrollbar-color: #7f1a5d3b;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #7f1a5d3b;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #977c8e;
+  border-radius: 10px;
+  border: 2px solid #7f1a5d3b;
+}
