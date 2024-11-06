@@ -233,7 +233,7 @@ function App() {
                 onChange={(e) => setNewTodo(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && addTodo()}
                 placeholder="Add a task..."
-                className="text-3xl text-texttwo placeholder-texttwo px-2 py-1 rounded-xl w-full mx-3 bg-[#977C8E] outline-none"
+                className="text-3xl text-texttwo placeholder-texttwo px-2 py-1 rounded-2xl w-full mx-4 bg-[#977C8E] outline-none"
               />
               <button onClick={addTodo} className="text-5xl pr-4 pb-1 text-[#977C8E] rounded-lg">
                 +
