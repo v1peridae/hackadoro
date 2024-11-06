@@ -6,7 +6,7 @@
 
 ### How does it work?
 
-![image of interface](assets/tutorial.png)
+![image of interface](./src/assets/tutorial.png)
 
 1. Set the time you wanna work for (blue)
 2. Set how long you want your breaks to be (yellow)
