@@ -20,4 +20,4 @@
 
 ### If You Notice Any Bugs...
 
-- Lmk!! You can do that by DMing me on discord @v1peridae.
+- Lmk!! You can do that by DMing me on slack @louisa or discord @v1peridae.
